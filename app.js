@@ -1,8 +1,25 @@
 const gameField2DArray = [];
-const numberOfColumns = 10;
-const numberOfRows = 10;
-const numberOfMines = 40;
+let numberOfColumns = 10;
+let numberOfRows = 10;
+let numberOfMines = 10;
 const wrapper = document.getElementById("fieldWrapper");
+const columnInput = document.getElementById("columnInput");
+const rowInput = document.getElementById("rowInput");
+const mineInput = document.getElementById("mineInput");
+
+handleFormSubmit = () => {
+  numberOfColumns = columnInput.value;
+  numberOfRows = rowInput.value;
+  numberOfMines = mineInput.value;
+  createEmptyField2DArray();
+  insertMines();
+  loopThrough2DArray(gameField2DArray);
+  wrapper.innerHTML = fieldArrayHTML();
+  columnInput.value = "";
+  rowInput.value = "";
+  mineInput.value = "";
+  
+}
 
 createEmptyRow = () => {
   let rowArray = [];
@@ -41,11 +58,12 @@ insertMines();
 
 updateClue = fieldValue => {
   if (fieldValue === "") {
-    return 1
-  } else if (typeof fieldValue === "number" ) {
-    return fieldValue += 1
+    return 1;
+  } else if (typeof fieldValue === "number") {
+    return (fieldValue += 1);
+  } else {
+    return "X";
   }
-  else if (fieldValue === "X") { return "X"}
 };
 
 isRowIndexValid = i => (i >= 0 && i < numberOfRows ? true : false);
@@ -54,28 +72,28 @@ isColumnIndexValid = j => (j >= 0 && j < numberOfColumns ? true : false);
 findAdjacentFieldsAndUpdateClue = (array, i, j) => {
   if (isRowIndexValid(i - 1) && isColumnIndexValid(j - 1)) {
     array[i - 1][j - 1] = updateClue(array[i - 1][j - 1]);
-  } 
+  }
   if (isRowIndexValid(i - 1) && isColumnIndexValid(j)) {
     array[i - 1][j] = updateClue(array[i - 1][j]);
-  } 
-  if (isRowIndexValid(i - 1) && isColumnIndexValid(j+1)) {
+  }
+  if (isRowIndexValid(i - 1) && isColumnIndexValid(j + 1)) {
     array[i - 1][j + 1] = updateClue(array[i - 1][j + 1]);
-  } 
-  if (isRowIndexValid(i) && isColumnIndexValid(j-1)) {
+  }
+  if (isRowIndexValid(i) && isColumnIndexValid(j - 1)) {
     array[i][j - 1] = updateClue(array[i][j - 1]);
-  } 
-  if (isRowIndexValid(i) && isColumnIndexValid(j+1)) {
+  }
+  if (isRowIndexValid(i) && isColumnIndexValid(j + 1)) {
     array[i][j + 1] = updateClue(array[i][j + 1]);
-  } 
-  if (isRowIndexValid(i+1) && isColumnIndexValid(j-1)) {
+  }
+  if (isRowIndexValid(i + 1) && isColumnIndexValid(j - 1)) {
     array[i + 1][j - 1] = updateClue(array[i + 1][j - 1]);
   }
-  if (isRowIndexValid(i+1) && isColumnIndexValid(j)) {
+  if (isRowIndexValid(i + 1) && isColumnIndexValid(j)) {
     array[i + 1][j] = updateClue(array[i + 1][j]);
   }
-  if (isRowIndexValid(i+1) && isColumnIndexValid(j+1)) {
-     array[i + 1][j + 1] = updateClue(array[i + 1][j + 1]);
-  } 
+  if (isRowIndexValid(i + 1) && isColumnIndexValid(j + 1)) {
+    array[i + 1][j + 1] = updateClue(array[i + 1][j + 1]);
+  }
 };
 
 loopThrough2DArray = array => {
@@ -88,7 +106,7 @@ loopThrough2DArray = array => {
     }
   }
 };
-loopThrough2DArray(gameField2DArray)
+loopThrough2DArray(gameField2DArray);
 
 fieldRowHTML = rowNumber => {
   let htmlRow = ``;

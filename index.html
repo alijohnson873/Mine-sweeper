@@ -1,16 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Mine Sweeper</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Mine Sweeper</h1>
     <h2>By Ali Johnson</h2>
+
+    <p>Number of columns:</p>
+    <input type="text" id="columnInput" value="" />
+    <br />
+    <p>
+      Number of rows:
+    </p>
+    <input type="text" id="rowInput" value="" />
+    <br />
+    <p>
+      Number of mines:
+    </p>
+    <input type="text" id="mineInput" value="" />
+    <br />
+    <input type="submit" value="Play!" onclick="handleFormSubmit()" />
+
     <section id="fieldWrapper"></section>
     <script src="app.js"></script>
-</body>
+  </body>
 </html>

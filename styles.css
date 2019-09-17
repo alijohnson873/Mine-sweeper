@@ -1,6 +1,7 @@
 body{
     text-align: center;
     font-family: sans-serif;
+    margin: 60px;
 }
 div{
     border: 1px solid black;
@@ -11,3 +12,15 @@ div{
     font-size: 30px;
 }
 
+input{
+    border: 1px solid black;
+    margin: 5px;
+}
+
+form{
+    margin: 20px;
+}
+
+p{
+    display: inline;
+}
