@@ -1,25 +1,11 @@
-const gameField2DArray = [];
+let gameField2DArray = [];
 let numberOfColumns = 10;
-let numberOfRows = 10;
+let numberOfRows = 3;
 let numberOfMines = 10;
 const wrapper = document.getElementById("fieldWrapper");
 const columnInput = document.getElementById("columnInput");
 const rowInput = document.getElementById("rowInput");
 const mineInput = document.getElementById("mineInput");
-
-handleFormSubmit = () => {
-  numberOfColumns = columnInput.value;
-  numberOfRows = rowInput.value;
-  numberOfMines = mineInput.value;
-  createEmptyField2DArray();
-  insertMines();
-  loopThrough2DArray(gameField2DArray);
-  wrapper.innerHTML = fieldArrayHTML();
-  columnInput.value = "";
-  rowInput.value = "";
-  mineInput.value = "";
-  
-}
 
 createEmptyRow = () => {
   let rowArray = [];
@@ -28,13 +14,11 @@ createEmptyRow = () => {
   }
   return rowArray;
 };
-
 createEmptyField2DArray = () => {
   for (let i = 0; i < numberOfRows; i++) {
     gameField2DArray.push(createEmptyRow())[i];
   }
 };
-createEmptyField2DArray();
 
 generateRandomIndexNumber = numberOfItemsInArray =>
   Math.floor(Math.random() * numberOfItemsInArray);
@@ -54,7 +38,6 @@ insertMines = () => {
     }
   }
 };
-insertMines();
 
 updateClue = fieldValue => {
   if (fieldValue === "") {
@@ -96,7 +79,7 @@ findAdjacentFieldsAndUpdateClue = (array, i, j) => {
   }
 };
 
-loopThrough2DArray = array => {
+updateClueArrayLoop = array => {
   for (let i = 0; i < numberOfRows; i++) {
     for (let j = 0; j < numberOfColumns; j++) {
       if (doesFieldHaveMine(array[i][j])) {
@@ -106,7 +89,6 @@ loopThrough2DArray = array => {
     }
   }
 };
-loopThrough2DArray(gameField2DArray);
 
 fieldRowHTML = rowNumber => {
   let htmlRow = ``;
@@ -124,4 +106,18 @@ fieldArrayHTML = () => {
   return html;
 };
 
-wrapper.innerHTML = fieldArrayHTML();
+handleFormSubmit = () => {
+  gameField2DArray = [];
+  numberOfColumns = columnInput.value;
+  numberOfRows = rowInput.value;
+  numberOfMines = mineInput.value;
+  if( numberOfMines > numberOfRows * numberOfColumns){
+    alert("You have entered more mines than fields available")
+    mineInput.value = "";
+  } else {
+    createEmptyField2DArray();
+    insertMines();
+    updateClueArrayLoop(gameField2DArray);
+    wrapper.innerHTML = fieldArrayHTML();
+  }
+}
