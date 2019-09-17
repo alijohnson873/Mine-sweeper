@@ -1,7 +1,7 @@
 const gameField2DArray = [];
 const numberOfColumns = 10;
 const numberOfRows = 10;
-const numberOfMines = 20;
+const numberOfMines = 10;
 const wrapper = document.getElementById("fieldWrapper");
 
 createEmptyRow = () => {
