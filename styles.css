@@ -1,0 +1,13 @@
+body{
+    text-align: center;
+    font-family: sans-serif;
+}
+div{
+    border: 1px solid black;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    text-align: center;
+    font-size: 30px;
+}
+
