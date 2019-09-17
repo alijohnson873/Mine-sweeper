@@ -1,7 +1,7 @@
 const gameField2DArray = [];
 const numberOfColumns = 10;
 const numberOfRows = 10;
-const numberOfMines = 10;
+const numberOfMines = 40;
 const wrapper = document.getElementById("fieldWrapper");
 
 createEmptyRow = () => {
@@ -40,7 +40,12 @@ insertMines = () => {
 insertMines();
 
 updateClue = fieldValue => {
-  return fieldValue ? (fieldValue += 1) : 1;
+  if (fieldValue === "") {
+    return 1
+  } else if (typeof fieldValue === "number" ) {
+    return fieldValue += 1
+  }
+  else if (fieldValue === "X") { return "X"}
 };
 
 isRowIndexValid = i => (i >= 0 && i < numberOfRows ? true : false);
@@ -83,8 +88,6 @@ loopThrough2DArray = array => {
     }
   }
 };
-
-//uncomment function below to see clue value, n.b. only works when no edge case errors.
 loopThrough2DArray(gameField2DArray)
 
 fieldRowHTML = rowNumber => {
