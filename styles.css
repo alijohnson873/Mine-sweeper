@@ -4,12 +4,13 @@ body{
     margin: 60px;
 }
 div{
-    border: 1px solid black;
+    border: 3px solid black;
     width: 30px;
     height: 30px;
     display: inline-block;
     text-align: center;
     font-size: 30px;
+    margin: 1px;
 }
 
 input{
@@ -17,7 +18,7 @@ input{
     margin: 5px;
 }
 
-form{
+section{
     margin: 20px;
 }
 

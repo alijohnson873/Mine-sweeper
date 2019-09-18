@@ -111,13 +111,48 @@ handleFormSubmit = () => {
   numberOfColumns = columnInput.value;
   numberOfRows = rowInput.value;
   numberOfMines = mineInput.value;
-  if( numberOfMines > numberOfRows * numberOfColumns){
-    alert("You have entered more mines than fields available")
+  if (numberOfMines > numberOfRows * numberOfColumns) {
+    alert(
+      `You have entered more mines than fields available! Maximum ${numberOfRows *
+        numberOfColumns} mines allowed.`
+    );
     mineInput.value = "";
   } else {
     createEmptyField2DArray();
     insertMines();
     updateClueArrayLoop(gameField2DArray);
     wrapper.innerHTML = fieldArrayHTML();
+    colorFieldItems();
   }
-}
+};
+
+colorFieldItems = () => {
+  wrapper.childNodes.forEach(element => {
+    if (element.innerText === "X") {
+      element.style.color = "red";
+    } else if (element.innerText === "1") {
+      element.style.color = "darkblue";
+    } else if (element.innerText === "2") {
+      element.style.color = "blue";
+    } else if (element.innerText === "3") {
+      element.style.color = "purple";
+    } else if (element.innerText === "4") {
+      element.style.color = "indigo";
+    } else if (element.innerText === "5") {
+      element.style.color = "darkorange";
+    } else if (element.innerText === "6") {
+      element.style.color = "coral";
+    } else if (element.innerText === "7") {
+      element.style.color = "orangered";
+    } else if (element.innerText === "8"){
+      element.style.color = "darkred"
+    }
+  });
+};
+
+
+
+
+// for (let i=0; i < wrapper.childNodes.length; i++){
+//   if
+// }
