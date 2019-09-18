@@ -93,7 +93,7 @@ updateClueArrayLoop = array => {
 fieldRowHTML = rowNumber => {
   let htmlRow = ``;
   for (let i = 0; i < numberOfColumns; i++) {
-    htmlRow += `<div>${gameField2DArray[rowNumber][i]}</div>`;
+    htmlRow += `<div><p>${gameField2DArray[rowNumber][i]}<p></div>`;
   }
   htmlRow += `<br>`;
   return htmlRow;
