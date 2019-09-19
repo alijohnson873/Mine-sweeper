@@ -23,7 +23,7 @@ createEmptyField2DArray = () => {
 generateRandomIndexNumber = numberOfItemsInArray =>
   Math.floor(Math.random() * numberOfItemsInArray);
 
-doesFieldHaveMine = array => (array === "X" ? true : false);
+doesFieldHaveMine = field => (field === "X" ? true : false);
 
 insertMines = () => {
   let minesAdded = 0;
@@ -83,7 +83,6 @@ updateClueArrayLoop = array => {
   for (let i = 0; i < numberOfRows; i++) {
     for (let j = 0; j < numberOfColumns; j++) {
       if (doesFieldHaveMine(array[i][j])) {
-        console.log(i, j);
         findAdjacentFieldsAndUpdateClue(array, i, j);
       }
     }
@@ -150,9 +149,3 @@ colorFieldItems = () => {
   });
 };
 
-
-
-
-// for (let i=0; i < wrapper.childNodes.length; i++){
-//   if
-// }
